@@ -35,8 +35,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod', // True in production
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' required for cross-site
+        secure: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod' || !!process.env.RENDER,
+        sameSite: (process.env.NODE_ENV === 'production' || !!process.env.RENDER) ? 'none' : 'lax',
         maxAge: 24 * 60 * 60 * 1000
     }
 }));
