@@ -14,6 +14,7 @@ import { startRedisServer } from './config/initRedis';
 dotenv.config();
 
 const app = express();
+app.set('trust proxy', 1); // Required for Render/Heroku
 const PORT = process.env.PORT || 5000;
 
 // Start Redis and then App
