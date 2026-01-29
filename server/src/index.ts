@@ -35,7 +35,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: false, // Set to true if using HTTPS
+        secure: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod', // True in production
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' required for cross-site
         maxAge: 24 * 60 * 60 * 1000
     }
 }));
