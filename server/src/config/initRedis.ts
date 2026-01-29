@@ -4,6 +4,11 @@ let redisServer: RedisMemoryServer;
 
 export const startRedisServer = async () => {
     try {
+        if (process.env.REDIS_URL) {
+            console.log('[Redis] using external redis in REDIS_URL');
+            return;
+        }
+
         redisServer = new RedisMemoryServer({
             instance: {
                 port: 6379, // Try to bind to default port

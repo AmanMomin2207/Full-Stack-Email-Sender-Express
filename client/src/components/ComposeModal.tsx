@@ -11,7 +11,7 @@ interface ComposeModalProps {
 const ComposeModal: React.FC<ComposeModalProps> = ({ isOpen, onClose, onSuccess }) => {
     const [subject, setSubject] = useState('');
     const [body, setBody] = useState('');
-    const [file, setFile] = useState<File | null>(null);
+    const [_file, setFile] = useState<File | null>(null);
     const [scheduledAt, setScheduledAt] = useState('');
     const [delaySeconds, setDelaySeconds] = useState(2);
     const [hourlyLimit, setHourlyLimit] = useState(100);
